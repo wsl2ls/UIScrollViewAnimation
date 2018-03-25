@@ -18,7 +18,7 @@
 > 通过效果分析对比可知，我们需要在第一步的基础上把每一个图片视图ImageView包装在***WSLAnimationView***里，让WSLAnimationView去处理ImageView的动画效果，那问题来了，我们怎么处理呢？
  > * 我们可以在拖拽过程中相对应的改变**right/left**图片在父视图WSLAnimationView上的X坐标，把***right***图片的坐标位置放到***相对***于***left***图片的***正下/偏右方***位置，然后随着拖拽滑动逐渐改变**right以及left**图片的相对位置X坐标，直至复位，回到它们在WSLAnimationView上的初始位置X=0，超出父视图的部分裁剪掉，也是设置WSLAnimationView对象的clipsToBounds = YES。
 
-![思路示意图.png](https://upload-images.jianshu.io/upload_images/1708447-986b7c71c432c701.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![思路示意图](https://upload-images.jianshu.io/upload_images/1708447-a4efedcfe97280d1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
   ####三、代码实现
    * #####1. 首先创建一个承载UIImageView的容器WSLAnimationView，用于渐进动画裁剪效果。
