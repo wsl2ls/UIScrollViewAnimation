@@ -12,7 +12,8 @@
 #### 二、分析动画效果，提出解决方案
 注意：这里的left和right是区分拖动中可见的两个视图。
 
-  * ##### 1. 分析效果
+ * ##### 1. 分析效果
+  
 >    由总效果图和第一步的普通的浏览效果图对比可以看出，在拖拽过程中，第一步中的普通效果图是图片之间首尾相连，当前(**left**)的图片尾部连接下一个(**right**)的图片首部；而目标总效果图中的是图片之间首首相连，尾尾相连，且滑动过程中，当前可见的图片有渐进的裁剪效果；前者就像是平铺在一起的一行书，一块儿左右平移，而后者就像是翻书时看到的效果，当前页***left***内容由边到内逐渐消失，而下一页***right***内容由边缘到里逐渐显示。
 
 * ##### 2. 解决思路
@@ -23,7 +24,7 @@
 
   #### 三、代码实现
   
-   * ##### 1. 首先创建一个承载UIImageView的容器WSLAnimationView，用于渐进动画裁剪效果。
+* ##### 1. 首先创建一个承载UIImageView的容器WSLAnimationView，用于渐进动画裁剪效果。
 ```
 @interface WSLAnimationView ()
 @property (nonatomic, strong) UIImageView * imageView;
@@ -50,7 +51,7 @@
 }
 ```
   
-   * ##### 2. 在拖拽滑动过程中进行动画处理
+* ##### 2. 在拖拽滑动过程中进行动画处理
    
 ```
 #define SCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width)
@@ -74,7 +75,7 @@
     rightView.contentX = -(SCROLLVIEW_WIDTH - AnimationOffset) + (x - (leftIndex * SCROLLVIEW_WIDTH))/SCROLLVIEW_WIDTH * (SCROLLVIEW_WIDTH - AnimationOffset);
 }
 ```
- * ##### 3. 代码处理逻辑说明
+* ##### 3. 代码处理逻辑说明
  
 > 动画偏移量AnimationOffset = 0 时 即***right***图片的坐标位置放到***相对***于***left***图片的***正下方***位置，此时的效果如下图所示；当AnimationOffset > 0 时就会出现目标总效果图了。
 
